@@ -22,4 +22,18 @@ class LinkedList<T> {
         tail = node
         count++
     }
+
+    fun clear() {
+        head = null
+        tail = null
+        count = 0
+    }
+
+    operator fun component1(): Node<T>? {
+        return head
+    }
+
+    operator fun component2(): Node<T>? {
+        return tail
+    }
 }

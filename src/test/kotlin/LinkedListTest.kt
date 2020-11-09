@@ -27,39 +27,73 @@ class LinkedListTest {
     }
 
     @Test
-    fun `first should not be null when first node is added`() {
+    fun `size should be zero when nodes are cleared`() {
         val testObject = LinkedList<Int>()
-
         testObject.add(10)
 
-        assertThat(testObject.first, `is`(notNullValue()))
+        testObject.clear()
+
+        assertThat(testObject.size, equalTo(0))
+    }
+
+    @Test
+    fun `first should be null when nodes are cleared`() {
+        val testObject = LinkedList<Int>()
+        testObject.add(10)
+
+        testObject.clear()
+
+        assertThat(testObject.first, `is`(nullValue()))
+    }
+
+    @Test
+    fun `last should be null when nodes are cleared`() {
+        val testObject = LinkedList<Int>()
+        testObject.add(10)
+
+        testObject.clear()
+
+        assertThat(testObject.last, `is`(nullValue()))
+    }
+
+    @Test
+    fun `first should not be null when first node is added`() {
+        val testObject = LinkedList<Int>()
+        testObject.add(10)
+
+        val actual = testObject.first
+
+        assertThat(actual, `is`(notNullValue()))
     }
 
     @Test
     fun `last should not be null when first node is added`() {
         val testObject = LinkedList<Int>()
-
         testObject.add(10)
 
-        assertThat(testObject.last, `is`(notNullValue()))
+        val actual = testObject.last
+
+        assertThat(actual, `is`(notNullValue()))
     }
 
     @Test
     fun `first and last should be equal when first node is added`() {
         val testObject = LinkedList<Int>()
-
         testObject.add(10)
 
-        assertThat(testObject.first, equalTo(testObject.last))
+        val (first, last) = testObject
+
+        assertThat(first, equalTo(last))
     }
 
     @Test
     fun `first and last should not be equal when second node is added`() {
         val testObject = LinkedList<Int>()
-
         testObject.add(10)
         testObject.add(20)
 
-        assertThat(testObject.first, not(equalTo(testObject.last)))
+        val (first, last) = testObject
+
+        assertThat(first, not(equalTo(last)))
     }
 }
